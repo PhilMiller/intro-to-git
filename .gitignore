@@ -1,0 +1,12 @@
+*.eps
+*.pdf
+intro-to-git.aux
+intro-to-git.toc
+intro-to-git.dvi
+intro-to-git.log
+intro-to-git.nav
+intro-to-git.out
+.intro-to-git.toc.sum
+intro-to-git.ps
+intro-to-git.snm
+intro-to-git.vrb
