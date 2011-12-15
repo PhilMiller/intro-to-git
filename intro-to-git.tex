@@ -145,35 +145,44 @@ Based on slides by Bart Trojanowski, jukie.net}
         \tableofcontents
 \end{frame}
 
-% =====================================================================
-% =====================================================================
-\mysection{Concepts}{_concepts}
-% ---------------------------------------------------------------------
+
+\mysection{Basics}{_basics}
+
+
 \begin{frame}
-\frametitle{Concepts}
+\frametitle{Basic Principle}
+Preserve a clear, timely record of software evolution
+\pause{}
 \begin{itemize}
-        \item Source Control Management
-                \begin{itemize}
-                        \item track changes to files
-                        \item repository / database of changes
-                        \item working directory / current state
-                \end{itemize}
+\item What
+  \begin{itemize}
+    \item constitutes the project?
+    \item files changed?
+    \item added? deleted?
+    \item differencess?
+  \end{itemize}
+\pause{}
+\item Who
+  \begin{itemize}
+    \item authored a particular revision?
+    \item incorporated that revision?
+  \end{itemize}
+\item When?
+\pause{}
+\item Why?
+\end{itemize}
 
-        \pause{}
-        \item Centralized SCM
-                \begin{itemize}
-                        \item server: single database
-                        \item client: working directory \&{} state
-                \end{itemize}
+\end{frame}
 
-        \pause{}
-        \item Decentralized SCM
-                \begin{itemize}
-                        \item anyone can be a server
-                        \item repository coupled with working directory
-                        \item complete history
-                        \item disconnected operation
-                \end{itemize}
+
+\begin{frame}
+\frametitle{What this buys us}
+\begin{itemize}
+\item What did I just change? (i.e. Why is it crashing?! ARRRGGGHHH)
+\item What are people working on?
+\item Who knows about feature/component X?
+\item How did bug Y get fixed? Which version has that fix?
+\item What code was used for these experiments?
 \end{itemize}
 
 \end{frame}
@@ -324,7 +333,7 @@ Based on slides by Bart Trojanowski, jukie.net}
                 \end{itemize}
         \end{column}
         \begin{column}[T]{.5\textwidth}
-                \vspace{.2\textheight}
+                %\vspace{.2\textheight}
                 \includegraphics[width=\linewidth]{repo-head.eps}
         \end{column}
 \end{columns}
@@ -344,7 +353,7 @@ Based on slides by Bart Trojanowski, jukie.net}
                 \end{itemize}
         \end{column}
         \begin{column}[T]{.5\textwidth}
-                \vspace{.2\textheight}
+                %\vspace{.2\textheight}
                 \includegraphics[width=\linewidth]{repo-detached-head.eps}
         \end{column}
 \end{columns}
@@ -379,8 +388,8 @@ Based on slides by Bart Trojanowski, jukie.net}
 Bootstrap
 \begin{itemize}
         \item init
-        \item checkout
-        \item switch branch
+        \item clone
+        \item checkout branch
 \end{itemize}
 
 \pause{}
@@ -408,23 +417,9 @@ Reference
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{Centralized SCM}
-\includegraphics[width=\linewidth]{centralized.eps}
+\frametitle{SCM operations: Communication}
+Sharing work, backing it up
 \begin{itemize}
-        \item operations require \textcolor{red}{server}
-                \begin{itemize}
-                        \item single point of failure
-                        \item bottleneck
-                \end{itemize}
-\end{itemize}
-\end{frame}
-
-% ---------------------------------------------------------------------
-\begin{frame}
-\frametitle{more SCM operations}
-Decentralized
-\begin{itemize}
-        \item clone
         \item pull, fetch
         \item push
 \end{itemize}
@@ -499,11 +494,11 @@ Decentralized
 % ---------------------------------------------------------------------
 \begin{frame}
 \frametitle{Is Decentralization any good?}
-
+In contrast to CVS and Subversion
 \begin{itemize}
         \item non-intrusive micro-commits
         \item detached operation
-        \item no single point of failure
+        \item no single (technical or social) point of failure
         \item backups are trivial
 \end{itemize}
 \end{frame}
