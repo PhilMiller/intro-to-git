@@ -3047,6 +3047,29 @@ Fred can't push directly to \verb|master|
 
 
 % =====================================================================
+\mysubsection{Pull Requests}{using:pull-requests}
+
+\begin{frame}
+\frametitle{Pull Requests}
+
+\begin{itemize}
+\item Create a descriptively named branch for your work
+\item Push branch to shared repo or public fork
+\item Open a (draft) \emph{pull request} in destination repo \\
+\quad Include ``Fixes \#12345'' in description as appropriate
+  \pause{}
+\item Get automated test results
+  \pause{}
+\item Receive and address review comments
+  \pause{}
+\item Branch merged
+\end{itemize}
+
+\end{frame}
+
+
+
+% =====================================================================
 \mysubsection{Stash}{using:loose}
 
 % ---------------------------------------------------------------------
@@ -3073,7 +3096,10 @@ Fred can't push directly to \verb|master|
         \item do that other thing
                 \pause{}
                 \vspace{\baselineskip}
-        \item \CMD{git stash pop/apply/drop}
+                \item \CMD{git stash list/show}
+                \pause{}
+                \vspace{\baselineskip}
+              \item \CMD{git stash pop/apply/drop}
 \end{itemize}
 \end{frame}
 
