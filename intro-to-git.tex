@@ -2170,6 +2170,57 @@ cannot switch branches.}
 \end{frame}
 
 
+% ---------------------------------------------------------------------
+\begin{frame}
+\frametitle{Cherry-picking (e.g. to share upstream)}
+
+\begin{columns}[t]
+  \begin{column}[T]{0.6\textwidth}
+    D is private, but E should be contributed
+  \end{column}
+  \begin{column}[T]{.4\textwidth}
+    \includegraphics[width=\linewidth]{cherry-pick-01.eps}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}
+\frametitle{Cherry-picking (e.g. to share upstream)}
+
+\begin{columns}[t]
+  \begin{column}[T]{0.6\textwidth}
+    D is private, but E should be contributed \\
+    {\small
+    \CMD{\$ git switch -c share-upstream}
+    }
+  \end{column}
+  \begin{column}[T]{.4\textwidth}
+    \includegraphics[width=\linewidth]{cherry-pick-02.eps}
+  \end{column}
+\end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------------
+\begin{frame}
+\frametitle{Cherry-picking (e.g. to share upstream)}
+
+\begin{columns}[t]
+  \begin{column}[T]{0.6\textwidth}
+    D is private, but E should be contributed \\
+    {\small
+      \cmd{\$ git switch -c share-upstream} \\
+      \CMD{\$ git cherry-pick E}
+    }
+  \end{column}
+  \begin{column}[T]{.4\textwidth}
+    \includegraphics[width=\linewidth]{cherry-pick-03.eps}
+  \end{column}
+\end{columns}
+\end{frame}
+
+
+
 % =====================================================================
 \mysubsection{Remotes}{using:remotes}
 
