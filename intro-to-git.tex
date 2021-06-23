@@ -95,6 +95,10 @@
 \textcolor{code-red}{#1}%
 }
 
+% #1: GUI tools
+% #2: Every day use
+% #3: Occasional use
+% #4: Plumbing
 \newcommand{\GitCmdTable}[4]{
 {\tiny \tt
 \begin{tabular}{llll}
@@ -113,8 +117,8 @@
 #4{check-ref-format} & #2{grep}              & #4{parse-remote}   & #2{status}             \\
 #2{checkout}         & #1{gui}               & #4{patch-id}       & #4{stripspace}         \\
 #4{checkout-index}   & #4{hash-object}       & #4{peek-remote}    & #3{submodule}          \\
-#3{cherry}           & #4{http-fetch}        & #4{prune}          & #3{svn}                \\
-#3{cherry-pick}      & #4{http-push}         & #4{prune-packed}   & #4{symbolic-ref}       \\
+#3{cherry}           & #4{http-fetch}        & #4{prune}          & #2{switch}             \\
+#2{cherry-pick}      & #4{http-push}         & #4{prune-packed}   & #4{symbolic-ref}       \\
 #1{citool}           & #4{imap-send}         & #2{pull}           & #2{tag}                \\
 #3{clean}            & #4{index-pack}        & #2{push}           & #4{tar-tree}           \\
 #2{clone}            & #2{init}              & #3{quiltimport}    & #4{unpack-file}        \\
@@ -123,12 +127,12 @@
 #2{config}           & #2{log}               & #4{receive-pack}   & #4{update-ref}         \\
 #4{count-objects}    & #4{lost-found}        & #3{reflog}         & #3{update-server-info} \\
 #4{cvsexportcommit}  & #4{ls-files}          & #4{relink}         & #4{upload-archive}     \\
-#4{cvsimport}        & #4{ls-remote}         & #2{remote}         & #4{upload-pack}        \\
+#4{cvsimport}        & #4{ls-remote}         & #3{remote}         & #4{upload-pack}        \\
 #4{cvsserver}        & #4{ls-tree}           & #4{repack}         & #4{var}                \\
 #4{daemon}           & #4{mailinfo}          & #4{repo-config}    & #4{verify-pack}        \\
 #3{describe}         & #4{mailsplit}         & #4{request-pull}   & #4{verify-tag}         \\
 #2{diff}             & #2{merge}             & #4{rerere}         & #3{whatchanged}        \\
-#4{diff-files}       & #4{merge-base}        & #2{reset}          & #4{write-tree}         \\
+#4{diff-files}       & #4{merge-base}        & #2{reset/restore}  & #4{write-tree}         \\
 #4{diff-index}       & #4{merge-file}        & #4{rev-list}       &                        \\
 #4{diff-tree}        & #4{merge-index}       & #4{rev-parse}      & #1{gitk}               \\
 \end{tabular}
@@ -188,10 +192,10 @@ Preserve a clear, timely record of software evolution
 \end{frame}
 
 % =====================================================================
-\mysubsection{SCM components}{concepts:components}
+\mysubsection{Version Control components}{concepts:components}
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM components}
+\frametitle{Version Control components}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 Working tree
@@ -211,7 +215,7 @@ Preserve a clear, timely record of software evolution
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM components}
+\frametitle{Version Control components}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 Repository contents
@@ -229,7 +233,7 @@ Preserve a clear, timely record of software evolution
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM components}
+\frametitle{Version Control components}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 Repository contents
@@ -248,7 +252,7 @@ Preserve a clear, timely record of software evolution
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM components}
+\frametitle{Version Control components}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 Repository contents
@@ -268,7 +272,7 @@ Preserve a clear, timely record of software evolution
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM components}
+\frametitle{Version Control components}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 directed acyclic graph
@@ -286,7 +290,7 @@ Preserve a clear, timely record of software evolution
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM components}
+\frametitle{Version Control components}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 References
@@ -304,7 +308,7 @@ Preserve a clear, timely record of software evolution
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM components}
+\frametitle{Version Control components}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 References
@@ -323,12 +327,12 @@ Preserve a clear, timely record of software evolution
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM components}
+\frametitle{Version Control components}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 HEAD
                 \begin{itemize}
-                        \item current checkout
+                        \item current reference commit
                         \item points to branch
                 \end{itemize}
         \end{column}
@@ -342,12 +346,12 @@ Preserve a clear, timely record of software evolution
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM components}
+\frametitle{Version Control components}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 HEAD
                 \begin{itemize}
-                        \item current checkout
+                        \item current reference commit
                         \item points to branch
                         \item sometimes `detached'
                 \end{itemize}
@@ -362,7 +366,7 @@ Preserve a clear, timely record of software evolution
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM components}
+\frametitle{Version Control components}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 Index
@@ -380,11 +384,11 @@ Preserve a clear, timely record of software evolution
 \end{frame}
 
 % =====================================================================
-\mysubsection{SCM operations}{concepts:operations}
+\mysubsection{Version Control operations}{concepts:operations}
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM operations}
+\frametitle{Version Control operations}
 Bootstrap
 \begin{itemize}
         \item init
@@ -417,7 +421,7 @@ Reference
 
 % ---------------------------------------------------------------------
 \begin{frame}
-\frametitle{SCM operations: Communication}
+\frametitle{Version Control operations: Communication}
 Sharing work, backing it up
 \begin{itemize}
         \item pull, fetch
@@ -503,15 +507,17 @@ Sharing work, backing it up
 \frametitle{Structure}
 
 \includegraphics[width=\linewidth]{struct-05.eps}
-\vspace{\baselineskip}
+\vspace{0.5\baselineskip}
 \begin{center}
         ``reading tree''
-
-        \vspace{\baselineskip}
-        \CMD{checkout} \\
-        \CMD{read-tree} \\
-        \CMD{reset}
 \end{center}
+\vspace{0.5\baselineskip}
+\begin{itemize}
+\item  \CMD{restore} \quad (preferred, since v2.23)
+\item        \CMD{checkout}
+\item        \CMD{read-tree}
+\item        \CMD{reset}
+\end{itemize}
 \vspace{\textheight}
 \end{frame}
 
@@ -520,15 +526,18 @@ Sharing work, backing it up
 \frametitle{Structure}
 
 \includegraphics[width=\linewidth]{struct-06.eps}
-\vspace{\baselineskip}
+\vspace{0.5\baselineskip}
 \begin{center}
-        ``checking out''
-
-        \vspace{\baselineskip}
-        \CMD{checkout} \\
-        \CMD{checkout-index} \\
-        \CMD{reset}
+  ``checking out''
 \end{center}
+        \vspace{0.5\baselineskip}
+\begin{itemize}
+
+\item  \CMD{restore} \quad (preferred, since v2.23)
+\item        \CMD{checkout} 
+\item        \CMD{checkout-index} 
+\item        \CMD{reset}
+\end{itemize}
 \vspace{\textheight}
 \end{frame}
 
@@ -1605,7 +1614,7 @@ remote branches
 \begin{frame}
 \frametitle{Switching branches}
 
-\CMD{\$ git checkout \fnt{-f} name}
+\CMD{\$ git switch \fnt{-f} name}
 \begin{itemize}
         \item checkout files from ``name'' branch
         \item \faint{optionally} force overwriting changed files
@@ -1617,7 +1626,7 @@ remote branches
 \begin{frame}
 \frametitle{Create and switch}
 
-\CMD{\$ git checkout -b name \fnt{commit}}
+\CMD{\$ git switch -c name \fnt{commit}}
 \begin{itemize}
         \item checkout files from ``name'' branch
 \end{itemize}
@@ -1628,13 +1637,13 @@ remote branches
 \begin{frame}
 \frametitle{Switching with changes}
 
-\CMD{\$ git checkout name} \\
+\CMD{\$ git switch name} \\
 \err{error: You have local changes to 'filename'; \\
 cannot switch branches.}
 
 \pause{}
 \vspace{\baselineskip}
-\CMD{\$ git checkout -m name}
+\CMD{\$ git switch -m name}
 \begin{itemize}
         \item merge outstanding diff onto branch ``name''
         \item can result in \red{conflict}
@@ -1663,7 +1672,7 @@ cannot switch branches.}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 {\small
-                \CMD{\$ git checkout -b bug-fix} \\
+                \CMD{\$ git switch -c bug-fix} \\
                 }
         \end{column}
         \begin{column}[T]{.5\textwidth}
@@ -1727,9 +1736,27 @@ cannot switch branches.}
                 you have a {\em wicked} idea
 
                 \vspace{\baselineskip}
-                {\small
+                       {\small
+                         (since v2.23)
                 \begin{Verbatim}[commandchars=\\\{\}]
-\CMD{\$ git checkout  -b wicked master}
+\CMD{\$ git switch -c wicked master}
+                \end{Verbatim}
+                }
+
+                \vspace{\baselineskip}
+                       {\small
+                         (earlier versions)
+                \begin{Verbatim}[commandchars=\\\{\}]
+\CMD{\$ git checkout -b wicked master}
+                \end{Verbatim}
+                }
+
+                \vspace{\baselineskip}
+                       {\small
+                         (equivalently)
+                \begin{Verbatim}[commandchars=\\\{\}]
+\CMD{\$ git branch wicked master}
+\CMD{\$ git switch wicked} or \CMD{\$ git checkout wicked}
                 \end{Verbatim}
                 }
 
@@ -1831,7 +1858,7 @@ cannot switch branches.}
 
                 \vspace{\baselineskip}
                 {\small
-                \CMD{\$ git checkout bug-fix} \\
+                \CMD{\$ git switch bug-fix} \\
                 }
         \end{column}
         \begin{column}[T]{.5\textwidth}
@@ -1880,7 +1907,7 @@ cannot switch branches.}
 
                 \vspace{\baselineskip}
                 {\small
-                \CMD{\$ git checkout wicked} \\
+                \CMD{\$ git switch wicked} \\
                 }
         \end{column}
         \begin{column}[T]{.5\textwidth}
@@ -1937,7 +1964,7 @@ cannot switch branches.}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 {\small
-                \CMD{\$ git checkout master} \\
+                \CMD{\$ git switch master} \\
                 }
         \end{column}
         \begin{column}[T]{.5\textwidth}
@@ -1953,7 +1980,7 @@ cannot switch branches.}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 {\small
-                \CMD{\$ git checkout master} \\
+                \CMD{\$ git switch master} \\
 
                 \CMD{\$ git merge bug-fix} \\
 
@@ -1962,7 +1989,7 @@ cannot switch branches.}
                 \faint{or}
                 \vspace{\baselineskip}
 
-                \CMD{\$ git checkout master} \\
+                \CMD{\$ git switch master} \\
                 \CMD{\$ git reset {-}-hard bug-fix} \\
                 }
         \end{column}
@@ -2046,7 +2073,7 @@ cannot switch branches.}
         \begin{column}[T]{.5\textwidth}
                 {\small
                 \begin{Verbatim}[commandchars=\\\{\}]
-\CMD{\$ git checkout -b three two}
+\CMD{\$ git switch -c three two}
                 \end{Verbatim}
                 }
         \end{column}
@@ -2064,7 +2091,7 @@ cannot switch branches.}
         \begin{column}[T]{.5\textwidth}
                 {\small
                 \begin{Verbatim}[commandchars=\\\{\}]
-\cmd{\$ git checkout -b three two}
+\cmd{\$ git switch -c three two}
 \CMD{\$ git merge one}
                 \end{Verbatim}
                 }
@@ -2095,7 +2122,7 @@ cannot switch branches.}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 {\small
-                \CMD{\$ git checkout three} \\
+                \CMD{\$ git switch three} \\
                 }
         \end{column}
         \begin{column}[T]{.5\textwidth}
@@ -2111,7 +2138,7 @@ cannot switch branches.}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 {\small
-                \cmd{\$ git checkout three} \\
+                \cmd{\$ git switch three} \\
                 \CMD{\$ git merge one two} \\
                 }
         \end{column}
@@ -2128,7 +2155,7 @@ cannot switch branches.}
 \begin{columns}[t]
         \begin{column}[T]{.5\textwidth}
                 {\small
-                \cmd{\$ git checkout three} \\
+                \cmd{\$ git switch three} \\
                 \CMD{\$ git merge one two} \\
                 }
                 \vspace{.2\textheight}
@@ -2858,7 +2885,7 @@ Fred can't push directly to \verb|master|
 \includegraphics[width=.5\linewidth]{remote-29.eps}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\CMD{\$ git checkout -b fred-fix \red{fred/master}}
+\CMD{\$ git switch -c fred-fix \red{fred/master}}
 \end{Verbatim}
 
 \vspace{\textheight}
@@ -2871,7 +2898,7 @@ Fred can't push directly to \verb|master|
 \includegraphics[width=.5\linewidth]{remote-30.eps}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\CMD{\$ git checkout -b fred-fix \red{fred/master}}
+\CMD{\$ git switch -c fred-fix \red{fred/master}}
 \end{Verbatim}
 
 \vspace{\textheight}
@@ -2884,7 +2911,7 @@ Fred can't push directly to \verb|master|
 \includegraphics[width=.5\linewidth]{remote-31.eps}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\CMD{\$ git checkout master}
+\CMD{\$ git switch master}
 \end{Verbatim}
 
 \vspace{\textheight}
@@ -2897,7 +2924,7 @@ Fred can't push directly to \verb|master|
 \includegraphics[width=.5\linewidth]{remote-32.eps}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\fnt{\$ git checkout master}
+\fnt{\$ git switch master}
 \CMD{\$ git merge fred-fix}
 \end{Verbatim}
 
@@ -2911,7 +2938,7 @@ Fred can't push directly to \verb|master|
 \includegraphics[width=.5\linewidth]{remote-33.eps}
 
 \begin{Verbatim}[commandchars=\\\{\}]
-\fnt{\$ git checkout master}
+\fnt{\$ git switch master}
 \fnt{\$ git merge fred-fix}
 \CMD{\$ git branch -d fred-fix}
 \end{Verbatim}
