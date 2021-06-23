@@ -11,8 +11,11 @@ EPS=$(SVG:.svg=.eps)
 #LATEX = latex -interaction errorstopmode
 LATEX = latex -interaction nonstopmode
 
-.PHONY: run eps ps pdf clean distclean
-default: pdf
+.PHONY: run eps ps pdf clean distclean pdf-lmk
+default: pdf-lmk
+
+pdf-lmk: ${EPS}
+	latexmk -pdf ${NAME}
 
 eps: ${EPS}
 
