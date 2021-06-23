@@ -32,7 +32,7 @@ ${PDF}: ${PS}
 	ps2pdf $<
 
 ${EPS}: %.eps: %.svg
-	inkscape -z -E $@ $<
+	inkscape -D --export-type=eps $@ $<
 
 distclean: clean
 	-rm -f ${EPS}
